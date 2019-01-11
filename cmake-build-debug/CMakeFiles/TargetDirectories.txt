@@ -1,0 +1,3 @@
+/home/fahr/git/opencv-findcontours/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/fahr/git/opencv-findcontours/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/fahr/git/opencv-findcontours/cmake-build-debug/CMakeFiles/opencv_findcontours.dir
