@@ -26,12 +26,22 @@ int main() {
     cv::drawContours(mask, contours, -1, cv::Scalar(255), CV_FILLED);
 
     // создаём ещё одно изображение
+    cv::Mat crop(img0.rows, img0.cols, CV_8UC3);
 
+    // делаем задний фон зелёным
+    crop.setTo(cv::Scalar(128, 128, 128));
+
+    // создаём результирующее изображени
+    img0.copyTo(crop, mask);
+
+    // нормализуем маску
+    cv::normalize(mask.clone(), mask, 0.0, 255.0, CV_MINMAX, CV_8UC1);
 
     // показываем изображение
     cv::imshow("original", img0);
     cv::imshow("mask", mask);
     cv::imshow("canny", img1);
+    cv::imshow("cropped", crop);
 
     // ожидание нажатия клавиши
     cv::waitKey(0);
@@ -39,5 +49,6 @@ int main() {
     // сохраняем изображения
     cv::imwrite("../images/apple_canny.jpg", img1);
     cv::imwrite("../images/mask.jpg", mask);
+    cv::imwrite("../images/apple_cropped.jpg", crop);
     return 0;
 }
